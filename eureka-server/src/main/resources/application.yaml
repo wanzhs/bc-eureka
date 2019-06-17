@@ -4,7 +4,10 @@ server:
 spring:
   application:
     name: eureka-server
-
+  security:
+    user:
+      name: user
+      password: user
 eureka:
   instance:
     hostname: 192.168.2.221

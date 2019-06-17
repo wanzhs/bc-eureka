@@ -7,6 +7,10 @@ spring:
   profiles:
     application:
       name: eureka-client
+  security:
+    user:
+      name: user
+      password: user
 eureka:
   instance:
     hostname: 192.168.2.221
@@ -14,4 +18,7 @@ eureka:
     lease-renewal-interval-in-seconds: 1 # 1秒一次心跳
   client:
     service-url:
-      defaultZone: http://192.168.2.221:8032/eureka/
+      defaultZone: http://user:user@192.168.2.221:8032/eureka/
+      security:
+        basic: user
+        passowrd: user
