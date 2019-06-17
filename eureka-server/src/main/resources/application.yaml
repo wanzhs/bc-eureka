@@ -1,13 +1,9 @@
+server:
+  port: 8032
+
 spring:
   application:
     name: eureka-server
-#  security: #µÇÂ¼ËùĞèµÄÕËºÅÃÜÂë
-#    user:
-#      name: user
-#      password: user
-
-server:
-  port: 8032
 
 eureka:
   instance:
@@ -15,24 +11,15 @@ eureka:
     ip-address: 192.168.2.221
     prefer-ip-address: true
   client:
-    fetch-registry: false  # ÓÉÓÚ¸ÃÓ¦ÓÃÎª×¢²áÖĞĞÄ£¬ËùÒÔÉèÖÃÎªfalse£¬´ú±í²»Ïë×¢²áÖĞĞÄ×¢²á×Ô¼º
-    register-with-eureka: false # ÓÉÓÚ×¢²áÖĞĞÄµÄÖ°Ôğ¾ÍÊÇÎ¬»¤·şÎñÊµÀı£¬Ëû²¢²»ĞèÒªÈ¥¼ìË÷·şÎñ£¬ËùÒÔÒ²ÉèÖÃÎªfalse
+    fetch-registry: false  # ç”±äºè¯¥åº”ç”¨ä¸ºæ³¨å†Œä¸­å¿ƒï¼Œæ‰€ä»¥è®¾ç½®ä¸ºfalseï¼Œä»£è¡¨ä¸æƒ³æ³¨å†Œä¸­å¿ƒæ³¨å†Œè‡ªå·±
+    register-with-eureka: false # ç”±äºæ³¨å†Œä¸­å¿ƒçš„èŒè´£å°±æ˜¯ç»´æŠ¤æœåŠ¡å®ä¾‹ï¼Œä»–å¹¶ä¸éœ€è¦å»æ£€ç´¢æœåŠ¡ï¼Œæ‰€ä»¥ä¹Ÿè®¾ç½®ä¸ºfalse
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-    # ÅäÖÃÊôĞÔ£¬µ«ÓÉÓÚ Eureka ×ÔÎÒ±£»¤Ä£Ê½ÒÔ¼°ĞÄÌøÖÜÆÚ³¤µÄÔ­Òò£¬¾­³£»áÓöµ½ Eureka Server ²»ÌŞ³ıÒÑ¹ØÍ£µÄ½ÚµãµÄÎÊÌâ
-    ## ¹Ø±Õ×ÔÎÒ±£»¤
+    # é…ç½®å±æ€§ï¼Œä½†ç”±äº Eureka è‡ªæˆ‘ä¿æŠ¤æ¨¡å¼ä»¥åŠå¿ƒè·³å‘¨æœŸé•¿çš„åŸå› ï¼Œç»å¸¸ä¼šé‡åˆ° Eureka Server ä¸å‰”é™¤å·²å…³åœçš„èŠ‚ç‚¹çš„é—®é¢˜
+    ## å…³é—­è‡ªæˆ‘ä¿æŠ¤
     healthcheck:
       enabled: true
   server:
     enable-self-preservation: false
-    #     ÇåÀí¼ä¸ô£¨µ¥Î»ºÁÃë£¬Ä¬ÈÏÊÇ60*1000£©
+    #     æ¸…ç†é—´éš”ï¼ˆå•ä½æ¯«ç§’ï¼Œé»˜è®¤æ˜¯60*1000ï¼‰
     eviction-interval-timer-in-ms: 5000
-#
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: "*"
-#  endpoint:
-#    health:
-#      show-details: always
