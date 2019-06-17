@@ -1,27 +1,17 @@
-spring:
-  application:
-    name: eureka-client
-#  security: #µÇÂ¼ËùĞèµÄÕËºÅÃÜÂë
-#    user:
-#      name: user
-#      password: user
-
 server:
   port: 8033
 
+spring:
+  application:
+    name: eureka-client
+  profiles:
+    application:
+      name: eureka-client
 eureka:
   instance:
     hostname: 192.168.2.221
-    lease-expiration-duration-in-seconds: 2 # 2Ãë¼´¹ıÆÚ
-    lease-renewal-interval-in-seconds: 1 # 1ÃëÒ»´ÎĞÄÌø
-    client:
-      service-url:
-        defaultZone: http://192.168.2.44:1000/eureka/
-    healthcheck:
-      enabled: true
-
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: "*"
+    lease-expiration-duration-in-seconds: 2 # 2ç§’å³è¿‡æœŸ
+    lease-renewal-interval-in-seconds: 1 # 1ç§’ä¸€æ¬¡å¿ƒè·³
+  client:
+    service-url:
+      defaultZone: http://192.168.2.221:8032/eureka/
