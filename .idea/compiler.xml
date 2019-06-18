@@ -10,6 +10,7 @@
         <module name="eureka-client" />
         <module name="eureka-provider" />
         <module name="eureka-server" />
+        <module name="oauth2-center" />
       </profile>
     </annotationProcessing>
   </component>
