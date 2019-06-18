@@ -10,8 +10,10 @@
         <module name="eureka-client" />
         <module name="eureka-provider" />
         <module name="eureka-server" />
-        <module name="oauth2-center" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="oauth2-center" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
