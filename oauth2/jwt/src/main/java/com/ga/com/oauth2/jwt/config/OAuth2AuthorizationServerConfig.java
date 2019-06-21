@@ -18,7 +18,7 @@ import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFacto
 
 import javax.sql.DataSource;
 
-//@Configuration
+@Configuration
 public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired(required = false)
@@ -43,13 +43,12 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     }
 
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+    public void configure(AuthorizationServerSecurityConfigurer oauthServer) {
         oauthServer
-                //允许所有资源服务器访问公钥端点（/oauth/token_key）
-                //只允许验证用户访问令牌解析端点（/oauth/check_token）
-                .tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()")
-                // 允许客户端发送表单来进行权限认证来获取令牌
-                .allowFormAuthenticationForClients();
+                // 开启/oauth/token_key验证端口无权限访问
+                .tokenKeyAccess("permitAll()")
+                // 开启/oauth/check_token验证端口认证权限访问
+                .checkTokenAccess("isAuthenticated()");
     }
 
     /**
