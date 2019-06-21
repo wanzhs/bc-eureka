@@ -82,10 +82,10 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>com.ga.com.eureka.common</groupId>-->
-            <!--<artifactId>model</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.ga.com</groupId>
+            <artifactId>oauth2.model</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-extension</artifactId>

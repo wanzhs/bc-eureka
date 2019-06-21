@@ -24,7 +24,7 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 
 @SpringBootConfiguration
-@MapperScan(basePackages = "com.ga.com.eureka.common.model.mapper.mapper", sqlSessionTemplateRef = "sqlSessionTemplate")
+@MapperScan(basePackages = "mapper.mapper", sqlSessionTemplateRef = "sqlSessionTemplate")
 public class MybatisOauthConfig {
 
     /**
@@ -65,7 +65,7 @@ public class MybatisOauthConfig {
             throws Exception {
         MybatisSqlSessionFactoryBean bean = new MybatisSqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setTypeEnumsPackage("com.ga.com.eureka.common.model.mapper.enums,com.ga.com.eureka.common.model.mapper.entity");
+        bean.setTypeEnumsPackage("mapper.enums,mapper.entity");
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:/oauthMapper/**Mapper.xml"));
         //***导入Mybatis配置***
         MybatisConfiguration configuration = new MybatisConfiguration();
@@ -76,7 +76,8 @@ public class MybatisOauthConfig {
         bean.setConfiguration(configuration);
         bean.setPlugins(new Interceptor[]{paginationInterceptor()});
         //***导入plus全局配置***
-        bean.setGlobalConfig(globalConfiguration());
+        GlobalConfig globalConfig = globalConfiguration();
+        bean.setGlobalConfig(globalConfig);
         return bean.getObject();
     }
 
@@ -96,7 +97,7 @@ public class MybatisOauthConfig {
     public GlobalConfig globalConfiguration() {
         GlobalConfig.DbConfig conf = new GlobalConfig.DbConfig();
         //数据库自增
-        conf.setIdType(IdType.ID_WORKER);
+        conf.setIdType(IdType.NONE);
         //字段策略 忽略判断
         conf.setFieldStrategy(FieldStrategy.IGNORED);
         //驼峰下划线转换含查询column及返回column(column下划线命名create_time，返回java实体是驼峰命名createTime，开启后自动转换否则保留原样)

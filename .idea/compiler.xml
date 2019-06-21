@@ -7,15 +7,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="eureka-client" />
-        <module name="eureka-model" />
         <module name="eureka-provider" />
         <module name="eureka-server" />
         <module name="jdbc" />
         <module name="jwt" />
         <module name="memory" />
+        <module name="oauth-model" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="eureka-model1" target="1.8" />
       <module name="oauth2-center" target="1.8" />
       <module name="oauth2_1" target="1.8" />
     </bytecodeTargetLevel>

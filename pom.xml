@@ -15,14 +15,13 @@
     <version>0.0.1</version>
     <modules>
         <module>oauth2</module>
-        <module>eureka-model</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.ga.com.eureka.common</groupId>
-                <artifactId>model</artifactId>
+                <groupId>com.ga.com</groupId>
+                <artifactId>oauth2.model</artifactId>
                 <version>0.0.1</version>
             </dependency>
             <dependency>

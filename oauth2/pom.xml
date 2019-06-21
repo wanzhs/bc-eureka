@@ -17,6 +17,7 @@
 
     <modules>
         <module>jwt</module>
+        <module>oauth-model</module>
     </modules>
 
 </project>
