@@ -1,8 +1,8 @@
 package com.ga.com.oauth2.jwt;
 
-//import com.ga.com.oauth2.jwt.service.IMBaseUserService;
+//import com.ga.com.oauth2.jwt.service.BaseUserService;
 
-import com.ga.com.oauth2.jwt.service.IMBaseUserService;
+import com.ga.com.oauth2.jwt.service.BaseUserService;
 import mapper.entity.BaseUser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +16,7 @@ import java.util.List;
 @SpringBootTest
 public class JwtApplicationTests {
     @Resource
-    IMBaseUserService baseUserService;
+    BaseUserService baseUserService;
 
     @Test
     public void contextLoads() {

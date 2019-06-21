@@ -1,8 +1,9 @@
 package com.ga.com.oauth2.jwt.service.impl;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ga.com.oauth2.jwt.service.IMBaseUserService;
+import com.ga.com.oauth2.jwt.service.BaseUserService;
 import mapper.entity.BaseUser;
 import mapper.mapper.BaseUserMapper;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ import java.util.UUID;
  * @since 2019-06-21
  */
 @Service
-public class MBaseUserServiceImpl extends ServiceImpl<BaseUserMapper, BaseUser> implements IMBaseUserService {
+public class BaseUserServiceImpl extends ServiceImpl<BaseUserMapper, BaseUser> implements BaseUserService {
 
     @Override
     public void addBaseUser(BaseUser baseUser) {
@@ -31,5 +32,12 @@ public class MBaseUserServiceImpl extends ServiceImpl<BaseUserMapper, BaseUser> 
     public List<BaseUser> getBaseUserList() {
         List<BaseUser> userList = this.baseMapper.selectList(null);
         return userList;
+    }
+
+    @Override
+    public BaseUser getUserByUserName(String username) {
+        BaseUser baseUser=this.baseMapper.selectOne(new QueryWrapper<BaseUser>().lambda()
+        .eq(BaseUser::getUserName,username));
+        return baseUser;
     }
 }
