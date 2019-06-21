@@ -1,45 +1,34 @@
 package com.ga.com.oauth2.jwt.config;
 
-import com.ga.com.oauth2.jwt.service.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
-import javax.sql.DataSource;
-
 //@Configuration
-public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+//@EnableAuthorizationServer
+public class OAuth2AuthorizationServerConfig2 extends AuthorizationServerConfigurerAdapter {
 
     @Autowired(required = false)
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private UserDetailsService userDetailsService;
-
-    @Autowired
-    private DataSource dataSource;
+    private TokenStore tokenStore;
 
     //告诉Spring Security Token的生成方式
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.authenticationManager(authenticationManager)
-                // 配置JwtAccessToken转换器
+        endpoints.tokenStore(tokenStore)
                 .accessTokenConverter(jwtAccessTokenConverter())
-                // refresh_token需要userDetailsService
-                .reuseRefreshTokens(false)
-                .userDetailsService(userDetailsService);
-        //.tokenStore(getJdbcTokenStore());
+                .authenticationManager(authenticationManager);
     }
 
     @Override
@@ -52,11 +41,13 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
                 .allowFormAuthenticationForClients();
     }
 
-    /**
-     * 使用非对称加密算法来对Token进行签名
-     * 使用私钥编码 JWT 中的  OAuth2 令牌
-     */
     @Bean
+    public TokenStore tokenStore() {
+        return new JwtTokenStore(jwtAccessTokenConverter());
+    }
+
+    @Bean
+    //使用私钥编码 JWT 中的  OAuth2 令牌
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource("mytest.jks"), "mypass".toCharArray());
@@ -66,8 +57,13 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        // 使用JdbcClientDetailsService客户端详情服务
-        clients.withClientDetails(new JdbcClientDetailsService(dataSource));
+        clients.inMemory()                  // 测试用，将客户端信息存储在内存中
+                .withClient("client")       // client_id
+                .secret("secret")                   // client_secret
+                .authorizedGrantTypes("authorization_code")     // 该client允许的授权类型
+                .scopes("app")                     // 允许的授权范围
+                .autoApprove(true);         //登录后绕过批准询问(/oauth/confirm_access)
+
     }
 
 }
