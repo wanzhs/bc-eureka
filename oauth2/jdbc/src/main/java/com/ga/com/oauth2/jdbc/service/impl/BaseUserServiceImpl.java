@@ -1,9 +1,9 @@
-package com.ga.com.oauth2.jwt.service.impl;
+package com.ga.com.oauth2.jdbc.service.impl;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ga.com.oauth2.jwt.service.BaseUserService;
+import com.ga.com.oauth2.jdbc.service.BaseUserService;
 import mapper.entity.BaseUser;
 import mapper.mapper.BaseUserMapper;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ import java.util.UUID;
  * @author wanzhs
  * @since 2019-06-21
  */
-@Service
+@Service("baseUserService")
 public class BaseUserServiceImpl extends ServiceImpl<BaseUserMapper, BaseUser> implements BaseUserService {
 
     @Override

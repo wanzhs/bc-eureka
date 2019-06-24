@@ -1,6 +1,6 @@
 package com.ga.com.oauth2.jwt;
 
-import com.ga.com.oauth2.jwt.service.BaseUserService;
+import com.ga.com.oauth2.jdbc.service.BaseUserService;
 import mapper.entity.BaseUser;
 import org.junit.Test;
 import org.junit.runner.RunWith;

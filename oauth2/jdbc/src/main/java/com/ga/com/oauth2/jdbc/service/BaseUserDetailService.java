@@ -1,11 +1,10 @@
-package com.ga.com.oauth2.jwt.service;
+package com.ga.com.oauth2.jdbc.service;
 
-import com.ga.com.oauth2.jwt.config.jwt.BaseUserDetail;
+import com.ga.com.oauth2.jdbc.config.BaseUserDetail;
 import mapper.entity.BaseRole;
 import mapper.entity.BaseUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,9 +22,9 @@ public class BaseUserDetailService implements UserDetailsService {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
+    @Resource
     private BaseUserService baseUserService;
-    @Autowired
+    @Resource
     private BaseRoleService baseRoleService;
 
     @Override

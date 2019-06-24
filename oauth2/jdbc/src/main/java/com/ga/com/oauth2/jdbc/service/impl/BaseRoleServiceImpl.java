@@ -1,7 +1,7 @@
-package com.ga.com.oauth2.jwt.service.impl;
+package com.ga.com.oauth2.jdbc.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ga.com.oauth2.jwt.service.BaseRoleService;
+import com.ga.com.oauth2.jdbc.service.BaseRoleService;
 import mapper.entity.BaseRole;
 import mapper.mapper.BaseRoleMapper;
 import mapper.mapper.BaseUserRoleMapper;
@@ -18,7 +18,7 @@ import java.util.List;
  * @author wanzhs
  * @since 2019-06-21
  */
-@Service
+@Service("baseRoleService")
 public class BaseRoleServiceImpl extends ServiceImpl<BaseRoleMapper, BaseRole> implements BaseRoleService {
     @Resource
     BaseUserRoleMapper baseUserRoleMapper;

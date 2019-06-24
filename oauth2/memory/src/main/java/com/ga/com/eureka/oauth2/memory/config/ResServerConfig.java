@@ -24,8 +24,8 @@ import java.util.Objects;
  * @date: 2018/1/20
  * @description: OAuth2 资源服务器配置类
  */
-@EnableResourceServer
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+//@EnableResourceServer
+//@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public abstract class ResServerConfig extends ResourceServerConfigurerAdapter {
 
     @Autowired(required = false)

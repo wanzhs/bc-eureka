@@ -1,0 +1,12 @@
+log:
+  base_path: D:\\cdz
+
+atomikos:
+    logdir: ${log.base_path}\\atomikos\\bc-oauth-jdbc\\transaction-logs
+    logname: bc-oauth-jdbc-transaction
+
+jdbc:
+  oauth:
+    url: 192.168.2.221:3306/db_oauth2
+    username: wanzhs
+    password: 123456

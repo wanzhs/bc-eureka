@@ -1,7 +1,6 @@
-package com.ga.com.oauth2.jwt.service;
+package com.ga.com.oauth2.jdbc.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import mapper.bean.ResponseData;
 import mapper.entity.BaseRole;
 
 import java.util.List;

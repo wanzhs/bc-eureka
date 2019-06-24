@@ -7,6 +7,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 @SpringBootApplication
 @EnableEurekaClient
+@EnableAuthorizationServer
 public class MemoryApplication {
 
     public static void main(String[] args) {

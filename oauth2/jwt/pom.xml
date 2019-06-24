@@ -87,6 +87,10 @@
             <artifactId>oauth2.model</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.ga.com.oauth2</groupId>
+            <artifactId>jdbc</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-extension</artifactId>
             <version>3.0.1</version>

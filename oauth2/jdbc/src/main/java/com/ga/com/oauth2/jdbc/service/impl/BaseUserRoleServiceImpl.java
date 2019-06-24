@@ -1,7 +1,7 @@
-package com.ga.com.oauth2.jwt.service.impl;
+package com.ga.com.oauth2.jdbc.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ga.com.oauth2.jwt.service.BaseUserRoleService;
+import com.ga.com.oauth2.jdbc.service.BaseUserRoleService;
 import mapper.entity.BaseUserRole;
 import mapper.mapper.BaseUserRoleMapper;
 import org.springframework.stereotype.Service;

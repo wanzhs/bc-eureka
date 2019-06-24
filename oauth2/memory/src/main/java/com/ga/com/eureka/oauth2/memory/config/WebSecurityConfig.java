@@ -1,38 +1,34 @@
-package com.ga.com.oauth2.jdbc.config;
+package com.ga.com.eureka.oauth2.memory.config;
 
-import com.ga.com.oauth2.jdbc.constant.AuthoritiesEnum;
-import org.springframework.beans.factory.BeanInitializationException;
+
+import com.ga.com.eureka.oauth2.memory.service.BaseUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import javax.annotation.PostConstruct;
 
 /**
- * @author: 林塬
- * @date: 2018/1/20
+ * @author:wanzhongsu
  * @description: Web 权限配置类
+ * @date:2019/6/24 14:29
  */
 @Configuration
 @EnableWebSecurity
-public class AbstractSecurityConfig extends WebSecurityConfigurerAdapter {
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     // 自动注入UserDetailsService
     @Autowired
-    private BaseUserDetailService baseUserDetailService;
+    private BaseUserDetailsService baseUserDetailsService;
 
     @Override
-    public void configure(HttpSecurity http) throws Exception {
+    protected void configure(HttpSecurity http) throws Exception {
         http    // 配置登陆页/login并允许访问
                 .formLogin().permitAll()
                 // 登出页
@@ -43,8 +39,14 @@ public class AbstractSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().csrf().disable();
     }
 
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
     /**
      * 用户验证
+     *
      * @param auth
      */
     @Override
@@ -52,12 +54,11 @@ public class AbstractSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(daoAuthenticationProvider());
     }
 
-
     @Bean
-    public DaoAuthenticationProvider daoAuthenticationProvider(){
+    public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         // 设置userDetailsService
-        provider.setUserDetailsService(baseUserDetailService);
+        provider.setUserDetailsService(baseUserDetailsService);
         // 禁止隐藏用户未找到异常
         provider.setHideUserNotFoundExceptions(false);
         // 使用BCrypt进行密码的hash

@@ -1,6 +1,6 @@
 package com.ga.com.oauth2.jwt.config;
 
-import com.ga.com.oauth2.jwt.service.BaseUserDetailService;
+import com.ga.com.oauth2.jdbc.service.BaseUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,7 @@ import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFacto
 
 import javax.sql.DataSource;
 
-@Configuration
+//@Configuration
 public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired(required = false)
