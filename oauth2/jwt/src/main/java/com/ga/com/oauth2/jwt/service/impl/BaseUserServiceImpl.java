@@ -7,6 +7,7 @@ import com.ga.com.oauth2.jwt.service.BaseUserService;
 import mapper.entity.BaseUser;
 import mapper.mapper.BaseUserMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 import java.util.UUID;
@@ -23,9 +24,11 @@ import java.util.UUID;
 public class BaseUserServiceImpl extends ServiceImpl<BaseUserMapper, BaseUser> implements BaseUserService {
 
     @Override
-    public void addBaseUser(BaseUser baseUser) {
-        baseUser.setUserId(UUID.randomUUID().toString());
-        this.baseMapper.insert(baseUser);
+    public void saveBaseUser(BaseUser baseUser) {
+        if (ObjectUtils.isEmpty(baseUser.getUserId())) {
+            baseUser.setUserId(UUID.randomUUID().toString());
+        }
+        this.baseMapper.insertOrUpdateBaseUser(baseUser);
     }
 
     @Override
@@ -36,8 +39,8 @@ public class BaseUserServiceImpl extends ServiceImpl<BaseUserMapper, BaseUser> i
 
     @Override
     public BaseUser getUserByUserName(String username) {
-        BaseUser baseUser=this.baseMapper.selectOne(new QueryWrapper<BaseUser>().lambda()
-        .eq(BaseUser::getUserName,username));
+        BaseUser baseUser = this.baseMapper.selectOne(new QueryWrapper<BaseUser>().lambda()
+                .eq(BaseUser::getUserName, username));
         return baseUser;
     }
 }

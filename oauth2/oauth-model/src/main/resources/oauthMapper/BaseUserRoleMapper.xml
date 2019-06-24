@@ -9,11 +9,19 @@
         <result column="role_id" property="roleId"/>
     </resultMap>
 
+    <resultMap id="BaseRole" type="mapper.entity.BaseRole">
+        <id column="role_id" property="roleId" />
+        <result column="role_code" property="roleCode" />
+        <result column="role_name" property="roleName" />
+        <result column="create_dt" property="createDt" />
+        <result column="update_dt" property="updateDt" />
+    </resultMap>
+
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         user_role_id, user_id, role_id
     </sql>
-    <select id="getRoleByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
+    <select id="getRoleByUserId" resultMap="BaseRole" parameterType="java.lang.String">
         SELECT
         a.role_id,
         a.role_code,

@@ -14,7 +14,7 @@ import java.util.List;
  * @since 2019-06-21
  */
 public interface BaseUserService extends IService<BaseUser> {
-    void addBaseUser(BaseUser baseUser);
+    void saveBaseUser(BaseUser baseUser);
 
     List<BaseUser> getBaseUserList();
 

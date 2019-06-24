@@ -54,8 +54,9 @@ public class BaseUserDetailService implements UserDetailsService {
         });
 
         // 返回带有用户权限信息的User
-        org.springframework.security.core.userdetails.User user = new org.springframework.security.core.userdetails.User(baseUser.getUserName(),
-                baseUser.getUserPwd(), isActive(baseUser.getUserActive()), true, true, true, authorities);
+        org.springframework.security.core.userdetails.User user =
+                new org.springframework.security.core.userdetails.User(baseUser.getUserName(),
+                        baseUser.getUserPwd(), isActive(baseUser.getUserActive().getValue()), true, true, true, authorities);
         return new BaseUserDetail(baseUser, user);
     }
 

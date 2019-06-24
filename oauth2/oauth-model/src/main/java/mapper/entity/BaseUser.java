@@ -4,8 +4,10 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.core.enums.IEnum;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -47,20 +49,20 @@ public class BaseUser extends Model<BaseUser> {
     @TableField("user_phone")
     private String userPhone;
     /**
-     * 用户性别
+     * 用户性别  0 女、1 男
      */
     @TableField("user_gender")
-    private Integer userGender;
+    private UserGender userGender;
     /**
      * 用户年龄
      */
     @TableField("user_age")
     private Integer userAge;
     /**
-     * 用户活跃
+     * 用户活跃   0 禁用、1 启用
      */
     @TableField("user_active")
-    private Integer userActive;
+    private UserActive userActive;
     /**
      * 创建时间
      */
@@ -80,5 +82,49 @@ public class BaseUser extends Model<BaseUser> {
     @Override
     protected Serializable pkVal() {
         return this.userId;
+    }
+
+    public enum UserGender implements IEnum<Integer> {
+        FEMALE(0, "女"),
+        MALE(1, "男");
+        private int value;
+        private String desc;
+
+        UserGender(int value, String desc) {
+            this.value = value;
+            this.desc = desc;
+        }
+
+        @Override
+        public Integer getValue() {
+            return this.value;
+        }
+
+        @JsonValue
+        public String getDesc() {
+            return this.desc;
+        }
+    }
+
+    public enum UserActive implements IEnum<Integer> {
+        DISABLE(0, "禁用"),
+        ENABLE(1, "启用");
+        private int value;
+        private String desc;
+
+        UserActive(int value, String desc) {
+            this.value = value;
+            this.desc = desc;
+        }
+
+        @Override
+        public Integer getValue() {
+            return this.value;
+        }
+
+        @JsonValue
+        public String getDesc() {
+            return this.desc;
+        }
     }
 }

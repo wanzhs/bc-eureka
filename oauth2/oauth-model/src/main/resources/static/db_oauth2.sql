@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80013
 File Encoding         : 65001
 
-Date: 2019-06-21 17:09:28
+Date: 2019-06-24 11:25:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,6 +31,7 @@ CREATE TABLE `base_role` (
 -- ----------------------------
 -- Records of base_role
 -- ----------------------------
+INSERT INTO `base_role` VALUES ('cb69ec48-fe68-44b0-9c44-87694419516f', 'USER_INFO', '用户信息', '2019-06-24 09:42:26', '2019-06-24 09:42:26');
 
 -- ----------------------------
 -- Table structure for base_user
@@ -39,11 +40,11 @@ DROP TABLE IF EXISTS `base_user`;
 CREATE TABLE `base_user` (
   `user_id` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `user_name` varchar(30) DEFAULT NULL,
-  `user_pwd` varchar(32) DEFAULT NULL,
+  `user_pwd` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `user_phone` varchar(20) DEFAULT NULL,
-  `user_gender` tinyint(3) DEFAULT NULL,
+  `user_gender` tinyint(3) DEFAULT NULL COMMENT ' 0 女、1 男',
   `user_age` int(3) DEFAULT NULL,
-  `user_active` tinyint(3) DEFAULT NULL,
+  `user_active` tinyint(3) DEFAULT NULL COMMENT ' 0 禁用、1 启用',
   `create_dt` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `update_dt` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`)
@@ -52,7 +53,7 @@ CREATE TABLE `base_user` (
 -- ----------------------------
 -- Records of base_user
 -- ----------------------------
-INSERT INTO `base_user` VALUES ('cb69ec48-fe68-44b0-9c44-87694419516e', '万忠苏', '123456', '13532123562', null, '23', null, '2019-06-21 14:07:14', '2019-06-21 14:07:14');
+INSERT INTO `base_user` VALUES ('cb69ec48-fe68-44b0-9c44-87694419516e', 'wanzhongsu', '$2a$10$F7qpehGckxdHK6nMnKLMQOQYN8WWTzjk4dNxgwuXMDd5crlTHec76', '13532123562', '1', '23', '1', '2019-06-24 10:56:36', '2019-06-21 14:07:14');
 
 -- ----------------------------
 -- Table structure for base_user_role
@@ -62,12 +63,17 @@ CREATE TABLE `base_user_role` (
   `user_role_id` varchar(255) NOT NULL,
   `user_id` varchar(255) DEFAULT NULL,
   `role_id` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`user_role_id`)
+  PRIMARY KEY (`user_role_id`),
+  KEY `UK_20190624123` (`user_id`),
+  KEY `UK_20190624124` (`role_id`),
+  CONSTRAINT `UK_20190624123` FOREIGN KEY (`user_id`) REFERENCES `base_user` (`user_id`),
+  CONSTRAINT `UK_20190624124` FOREIGN KEY (`role_id`) REFERENCES `base_role` (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of base_user_role
 -- ----------------------------
+INSERT INTO `base_user_role` VALUES ('cb69ec48-fe68-44b0-9c44-87694419516e', 'cb69ec48-fe68-44b0-9c44-87694419516e', 'cb69ec48-fe68-44b0-9c44-87694419516f');
 
 -- ----------------------------
 -- Table structure for clientdetails

@@ -4,20 +4,28 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="mapper.entity.BaseUser">
-        <id column="user_id" property="userId" />
-        <result column="user_name" property="userName" />
-        <result column="user_pwd" property="userPwd" />
-        <result column="user_phone" property="userPhone" />
-        <result column="user_gender" property="userGender" />
-        <result column="user_age" property="userAge" />
-        <result column="user_active" property="userActive" />
-        <result column="create_dt" property="createDt" />
-        <result column="update_dt" property="updateDt" />
+        <id column="user_id" property="userId"/>
+        <result column="user_name" property="userName"/>
+        <result column="user_pwd" property="userPwd"/>
+        <result column="user_phone" property="userPhone"/>
+        <result column="user_gender" property="userGender"/>
+        <result column="user_age" property="userAge"/>
+        <result column="user_active" property="userActive"/>
+        <result column="create_dt" property="createDt"/>
+        <result column="update_dt" property="updateDt"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         user_id, user_name, user_pwd, user_phone, user_gender, user_age, user_active, create_dt, update_dt
     </sql>
+    <insert id="insertOrUpdateBaseUser" parameterType="mapper.entity.BaseUser">
+        INSERT INTO base_user(user_id, user_name, user_pwd, user_phone, user_gender, user_age, user_active)
+        VALUES
+        (#{userId},#{userName},#{userPwd},#{userPhone},#{userGender},#{userAge},#{userActive})
+        ON DUPLICATE KEY UPDATE
+        user_name=#{userName},user_pwd=#{userPwd},user_phone=#{userPhone},user_gender=#{userGender},user_age=#{userAge}
+        ,user_active=#{userActive}
+    </insert>
 
 </mapper>
