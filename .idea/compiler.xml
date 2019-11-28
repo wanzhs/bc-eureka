@@ -6,6 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="client" />
+        <module name="demo-jwt" />
         <module name="eureka-client" />
         <module name="eureka-provider" />
         <module name="eureka-server" />
@@ -13,6 +15,9 @@
         <module name="jwt" />
         <module name="memory" />
         <module name="oauth-model" />
+        <module name="oauth2.model" />
+        <module name="provider" />
+        <module name="server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
