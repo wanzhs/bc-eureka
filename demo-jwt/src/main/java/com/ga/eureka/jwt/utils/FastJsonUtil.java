@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * fastJson 工具类
+ * FastJson 工具类
  *
- * @author luqi
- * @date 2019/9/4_14:39
+ * @author wanzhongsu
+ * @date 2019/11/30 10:15
  */
 public class FastJsonUtil {
 

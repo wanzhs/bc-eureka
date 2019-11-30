@@ -17,7 +17,7 @@
 
     <modules>
         <module>jwt</module>
-        <module>oauth-model</module>
+        <module>oauth2-model</module>
         <module>jdbc</module>
     </modules>
 

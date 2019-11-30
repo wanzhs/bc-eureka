@@ -21,12 +21,27 @@
         <dependencies>
             <dependency>
                 <groupId>com.ga.com</groupId>
-                <artifactId>oauth2.model</artifactId>
+                <artifactId>oauth2-model</artifactId>
                 <version>0.0.1</version>
             </dependency>
             <dependency>
                 <groupId>com.ga.com</groupId>
                 <artifactId>oauth2</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ga.com.eureka</groupId>
+                <artifactId>eureka-client</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ga.com.eureka</groupId>
+                <artifactId>eureka-server</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ga.com.eureka</groupId>
+                <artifactId>eureka-provider</artifactId>
                 <version>0.0.1</version>
             </dependency>
             <dependency>

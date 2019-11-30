@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ga.com</groupId>
-    <artifactId>oauth2.model</artifactId>
+    <artifactId>oauth2-model</artifactId>
     <version>0.0.1</version>
-    <name>oauth2.model</name>
+    <name>oauth2-model</name>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>

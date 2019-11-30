@@ -15,10 +15,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *  jwt 操作类
+ * JWT 操作类
  *
- * @author luqi
- * @date 2019/8/22_14:35
+ * @author wanzhongsu
+ * @date 2019/11/30 10:16
  */
 @Slf4j
 @RequiredArgsConstructor
@@ -106,7 +106,7 @@ public class JwtOperator {
                 .setExpiration(expirationTime)
                 // 你也可以改用你喜欢的算法
                 // 支持的算法详见：https://github.com/jwtk/jjwt#features
-                .signWith(key,SignatureAlgorithm.HS256)
+                .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 

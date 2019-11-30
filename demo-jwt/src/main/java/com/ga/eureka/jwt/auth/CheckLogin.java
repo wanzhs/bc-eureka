@@ -1,9 +1,10 @@
 package com.ga.eureka.jwt.auth;
+
 /**
- *  检测是否登陆注解
+ * 检测是否需要验证登录
  *
- * @author luqi
- * @date 2019/8/22_15:00
+ * @author wanzhongsu
+ * @date 2019/11/30 10:14
  */
 public @interface CheckLogin {
 }

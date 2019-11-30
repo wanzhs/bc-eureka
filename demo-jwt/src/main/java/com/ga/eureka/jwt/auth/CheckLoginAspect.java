@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 切面检测
  *
- * @author luqi
- * @date 2019/8/22_15:01
+ * @author wanzhongsu
+ * @date 2019/11/30 10:15
  */
 @Aspect
 @Component
@@ -34,7 +34,7 @@ public class CheckLoginAspect {
             ServletRequestAttributes attributes = (ServletRequestAttributes) requestAttributes;
             HttpServletRequest request = attributes.getRequest();
             String token = request.getHeader("X-Token");
-            if (StringUtils.isEmpty(token)){
+            if (StringUtils.isEmpty(token)) {
                 throw new Exception("token为空");
             }
             /*校验token是否合法,是否过期*/

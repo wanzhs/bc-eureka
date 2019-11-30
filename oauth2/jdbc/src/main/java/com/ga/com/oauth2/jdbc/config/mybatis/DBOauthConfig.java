@@ -6,9 +6,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 
 /**
- * @author:luqi
- * @description: 中心库配置
- * @date:2018/9/4_9:09
+ * 中央数据库配置
+ * @author wanzhongsu
+ * @date 2019/11/30 10:16
  */
 @Data
 @ConfigurationProperties(prefix = "mysql.datasource.oauth")
