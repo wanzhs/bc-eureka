@@ -16,6 +16,7 @@
         <option value="$PROJECT_DIR$/oauth2/jwt/pom.xml" />
         <option value="$PROJECT_DIR$/eureka-model/pom.xml" />
         <option value="$PROJECT_DIR$/demo-jwt/pom.xml" />
+        <option value="$PROJECT_DIR$/oauth2/demo/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
