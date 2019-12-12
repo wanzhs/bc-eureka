@@ -19,6 +19,7 @@
         <module>jwt</module>
         <module>oauth2-model</module>
         <module>jdbc</module>
+        <module>demo-authorization-code</module>
     </modules>
 
 </project>

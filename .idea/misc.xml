@@ -11,12 +11,14 @@
         <option value="$PROJECT_DIR$/eureka-server/pom.xml" />
         <option value="$PROJECT_DIR$/eureka-client/pom.xml" />
         <option value="$PROJECT_DIR$/eureka-provider/pom.xml" />
-        <option value="$PROJECT_DIR$/oauth2/memory/pom.xml" />
         <option value="$PROJECT_DIR$/oauth2/jdbc/pom.xml" />
         <option value="$PROJECT_DIR$/oauth2/jwt/pom.xml" />
         <option value="$PROJECT_DIR$/eureka-model/pom.xml" />
         <option value="$PROJECT_DIR$/demo-jwt/pom.xml" />
         <option value="$PROJECT_DIR$/oauth2/demo/pom.xml" />
+        <option value="$PROJECT_DIR$/oauth2/demo-authorization-code/qq/pom.xml" />
+        <option value="$PROJECT_DIR$/oauth2/demo-authorization-code/aiqiyi/pom.xml" />
+        <option value="$PROJECT_DIR$/oauth2/demo-authorization-code/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

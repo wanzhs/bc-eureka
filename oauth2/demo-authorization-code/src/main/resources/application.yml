@@ -1,0 +1,15 @@
+
+spring:
+  redis:
+    host: 127.0.0.1
+    database: 8
+  application:
+    name: oauth2-server
+  thymeleaf:
+    prefix: classpath:/templates/
+server:
+  port: 18084
+
+logging:
+  level:
+    org.springframework.security: DEBUG
