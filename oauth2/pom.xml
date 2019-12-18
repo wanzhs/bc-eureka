@@ -16,10 +16,11 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>jwt</module>
-        <module>oauth2-model</module>
-        <module>jdbc</module>
         <module>demo-authorization-code</module>
+        <module>demo-client-credentials</module>
+        <module>oauth2-model</module>
+        <module>oauth2-jdbc</module>
+        <module>oauth2-jwt</module>
     </modules>
 
 </project>

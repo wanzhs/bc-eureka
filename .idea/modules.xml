@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/oauth2/demo-authorization-code1/aiqiyi/aiqiyi.iml" filepath="$PROJECT_DIR$/oauth2/demo-authorization-code1/aiqiyi/aiqiyi.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oauth2/demo-client-credentials/demo-client-credentials.iml" filepath="$PROJECT_DIR$/oauth2/demo-client-credentials/demo-client-credentials.iml" />
       <module fileurl="file://$PROJECT_DIR$/oauth2/demo-authorization-code1/qq/qq.iml" filepath="$PROJECT_DIR$/oauth2/demo-authorization-code1/qq/qq.iml" />
     </modules>
   </component>

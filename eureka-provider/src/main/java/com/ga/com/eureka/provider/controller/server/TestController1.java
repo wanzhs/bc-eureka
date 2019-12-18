@@ -1,4 +1,4 @@
-package com.ga.com.eureka.provider.controller;
+package com.ga.com.eureka.provider.controller.server;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

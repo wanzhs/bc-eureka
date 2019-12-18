@@ -1,10 +1,10 @@
 spring:
   application:
     name: eureka-server
-#  security: #登录所需的账号密码
-#    user:
-#      name: user
-#      password: user
+  security: #登录所需的账号密码
+    user:
+      name: user
+      password: user
 
 server:
   port: 8032
@@ -27,12 +27,12 @@ eureka:
     enable-self-preservation: false
     #     清理间隔（单位毫秒，默认是60*1000）
     eviction-interval-timer-in-ms: 5000
-#
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: "*"
-#  endpoint:
-#    health:
-#      show-details: always
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

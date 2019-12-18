@@ -3,21 +3,17 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-jwt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-center" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-client" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-provider" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-server/src/main/resources/applicationbk.yaml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/oauth2" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/oauth2/demo-authorization-code" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/oauth2/demo-authorization-code1" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/oauth2/demo-authorization-code1/aiqiyi" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/oauth2/demo-authorization-code1/qq" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/oauth2/demo-client-credentials" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/oauth2/jdbc" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/oauth2/jdbc/src/main/resources/application.yaml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/oauth2/jwt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/oauth2/memory" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/oauth2/memory/src/main/resources/application.yaml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/oauth2/oauth2-jdbc" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/oauth2/oauth2-jdbc/src/main/resources/application.yaml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/oauth2/oauth2-jwt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/oauth2/oauth2-model" charset="UTF-8" />
   </component>
 </project>

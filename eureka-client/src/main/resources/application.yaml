@@ -5,11 +5,20 @@ spring:
   application:
     name: eureka-client
 
-#eureka:
-#  instance:
-#    hostname: 192.168.2.221
-#    lease-expiration-duration-in-seconds: 2 # 2秒即过期
-#    lease-renewal-interval-in-seconds: 1 # 1秒一次心跳
-#  client:
-#    service-url:
-#      defaultZone: http://user:user@192.168.2.221:8032/eureka/
+eureka:
+  instance:
+    hostname: 192.168.2.221
+    lease-expiration-duration-in-seconds: 2 # 2秒即过期
+    lease-renewal-interval-in-seconds: 1 # 1秒一次心跳
+  client:
+    service-url:
+      defaultZone: http://user:user@192.168.2.221:8032/eureka/
+
+feign:
+  hystrix:
+    enabled: true
+
+
+ribbon:
+  ConnectTimeout: 500
+  ReadTimeout: 5000

@@ -10,12 +10,13 @@
         <module name="demo-authorization-code" />
         <module name="demo-client-credentials" />
         <module name="demo-jwt" />
+        <module name="eureka-center" />
         <module name="eureka-client" />
         <module name="eureka-provider" />
         <module name="eureka-server" />
-        <module name="jdbc" />
-        <module name="jwt" />
         <module name="oauth-model" />
+        <module name="oauth2-jdbc" />
+        <module name="oauth2-jwt" />
         <module name="oauth2-model" />
         <module name="qq" />
       </profile>
@@ -24,7 +25,6 @@
       <module name="aiqiyi" target="1.8" />
       <module name="bc-mysql" target="1.8" />
       <module name="demo-authorization-code1" target="1.8" />
-      <module name="demo-client-credentials" target="1.8" />
       <module name="eureka-model1" target="1.8" />
       <module name="memory" target="1.8" />
       <module name="oauth2-center" target="1.8" />
