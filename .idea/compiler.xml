@@ -6,7 +6,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="aiqiyi" />
         <module name="demo-authorization-code" />
         <module name="demo-client-credentials" />
         <module name="demo-jwt" />
@@ -18,7 +17,6 @@
         <module name="oauth2-jdbc" />
         <module name="oauth2-jwt" />
         <module name="oauth2-model" />
-        <module name="qq" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
