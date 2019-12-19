@@ -28,3 +28,10 @@ management:
       exposure:
         include: '*'
 
+turbine:
+  app-config: eureka-client #注册中心的调用者名称
+  aggregator:
+    cluster-config: default # 默认
+  cluster-name-expression: new String("default")
+  combine-host-port: true
+

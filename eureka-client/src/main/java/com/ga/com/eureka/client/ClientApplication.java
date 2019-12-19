@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.cloud.netflix.turbine.EnableTurbine;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
@@ -14,7 +16,8 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableCircuitBreaker
-//@EnableHystrixDashboard
+@EnableHystrixDashboard
+@EnableTurbine
 public class ClientApplication {
 
     public static void main(String[] args) {
@@ -26,8 +29,8 @@ public class ClientApplication {
         HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
         ServletRegistrationBean registrationBean = new ServletRegistrationBean(streamServlet);
         registrationBean.setLoadOnStartup(1);
-        registrationBean.addUrlMappings("/hystrix.stream");
-//        registrationBean.addUrlMappings("/actuator/hystrix.stream"); // turbine 默认支持的路径
+//        registrationBean.addUrlMappings("/hystrix.stream");
+        registrationBean.addUrlMappings("/actuator/hystrix.stream"); // turbine 默认支持的路径
         registrationBean.setName("HystrixMetricsStreamServlet");
         return registrationBean;
     }

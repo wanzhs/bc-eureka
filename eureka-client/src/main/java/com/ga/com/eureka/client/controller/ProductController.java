@@ -1,6 +1,8 @@
 package com.ga.com.eureka.client.controller;
 
 
+import com.ga.com.eureka.client.config.ProductHystrixCommandSemaphore;
+import com.ga.com.eureka.client.config.ProductHystrixCommandThread;
 import com.ga.com.eureka.client.fein.ProductFeignService;
 import com.ga.com.eureka.client.fein.TestFeignService;
 import com.ga.com.eureka.eurekacenter.entity.Product;
@@ -27,5 +29,15 @@ public class ProductController {
     @GetMapping("/test2/{id}")
     public Product getProductById(@PathVariable("id") Long id) {
         return productFeignService.getProductById(id);
+    }
+
+    @GetMapping("/test3")
+    public Product getProduct3(){
+        return new ProductHystrixCommandSemaphore().execute();
+    }
+
+    @GetMapping("/test4")
+    public Product getProduct4(){
+        return new ProductHystrixCommandThread().execute();
     }
 }
