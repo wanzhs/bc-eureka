@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
+
 @Import(FeignClientsConfiguration.class)  // Spring Cloud为Feign默认提供的配置类
 @RestController
 @RequestMapping("/user")
@@ -33,10 +35,15 @@ public class UserController {
                 .requestInterceptor(new BasicAuthRequestInterceptor("admin", "admin_password"))
                 .target(UserFeignService.class, "http://eureka-provider/");
     }
-    @HystrixCommand(fallbackMethod = "")
+
     @GetMapping("/test1/{id}")
+    @HystrixCommand(fallbackMethod = "getUserByIdFallback")
     public User getUserById(@PathVariable("id") Long id) {
         return userFeignService.getUserById(id);
+    }
+
+    public User getUserByIdFallback(Long id) {
+        return new User().setUsername("Hystrix熔断1").setId(Long.MAX_VALUE).setAge(2).setBalance(BigDecimal.ONE);
     }
 
     @GetMapping("/test2/{id}")
