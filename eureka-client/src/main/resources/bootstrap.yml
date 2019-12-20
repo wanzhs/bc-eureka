@@ -1,0 +1,29 @@
+server:
+  port: 8033
+
+spring:
+  cloud:
+    # 指定从配置中心
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+      profile: dev
+      label: dev
+
+  application:
+    name: eureka-client
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:user@192.168.2.221:8032/eureka/
+  instance:
+    hostname: 192.168.2.221
+    lease-expiration-duration-in-seconds: 2 # 2秒即过期
+    lease-renewal-interval-in-seconds: 1 # 1秒一次心跳

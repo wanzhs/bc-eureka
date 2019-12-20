@@ -25,8 +25,8 @@ spring:
     console:
       path: /h2-console
       enabled: true
-  main:
-    allow-bean-definition-overriding: true
+#  main:
+#    allow-bean-definition-overriding: true
   cloud:
     refresh:
       refreshable: none

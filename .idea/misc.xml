@@ -20,6 +20,7 @@
         <option value="$PROJECT_DIR$/oauth2/demo-authorization-code/aiqiyi/pom.xml" />
         <option value="$PROJECT_DIR$/oauth2/demo-authorization-code/pom.xml" />
         <option value="$PROJECT_DIR$/eureka-center/pom.xml" />
+        <option value="$PROJECT_DIR$/config-server/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

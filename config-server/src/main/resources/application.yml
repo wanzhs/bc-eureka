@@ -1,0 +1,49 @@
+# �����˿�
+server:
+  port: 8035
+
+# ��������
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        default-label: dev
+        jdbc:
+          sql: SELECT akey, avalue from config_server where APPLICATION=? and APROFILE=? and LABEL=?
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/zipkin?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: wanzhs
+    password: 123456
+
+
+  zipkin:
+    base-url: http://localhost:9411/
+  sleuth:
+    sampler:
+      probability: 1
+  profiles:
+    active: jdbc
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+# ע������
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:user@192.168.2.221:8032/eureka/
+  instance:
+    hostname: 192.168.2.221
+    lease-expiration-duration-in-seconds: 2 # 2 秒过期
+    lease-renewal-interval-in-seconds: 1 # 1 秒 心跳
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -14,12 +14,13 @@
     <packaging>pom</packaging>
     <version>0.0.1</version>
     <modules>
-        <module>oauth2</module>
+        <module>config-server</module>
         <module>eureka-center</module>
         <module>eureka-provider</module>
         <module>eureka-client</module>
         <module>eureka-server</module>
         <module>demo-jwt</module>
+        <module>oauth2</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
