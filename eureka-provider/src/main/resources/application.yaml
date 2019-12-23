@@ -30,8 +30,9 @@ spring:
       client:
         instance:
           service-base-url: http://admin-monitor-server
-
-#  main:
+        username: admin
+        password: 123456
+  #  main:
 #    allow-bean-definition-overriding: true
   cloud:
     refresh:

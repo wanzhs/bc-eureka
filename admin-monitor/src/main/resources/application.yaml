@@ -3,6 +3,10 @@ server:
 spring:
   application:
     name: admin-monitor-server
+  security:
+    user:
+      name: admin
+      password: 123456
 
 eureka:
   instance:
@@ -12,3 +16,4 @@ eureka:
   client:
     service-url:
       defaultZone: http://user:user@192.168.2.221:8032/eureka/
+
