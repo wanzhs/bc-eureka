@@ -19,6 +19,7 @@
         <module>eureka-provider</module>
         <module>eureka-client</module>
         <module>eureka-server</module>
+        <module>admin-monitor</module>
         <module>demo-jwt</module>
         <module>oauth2</module>
     </modules>
@@ -64,6 +65,16 @@
             <dependency>
                 <groupId>com.ga.com</groupId>
                 <artifactId>oauth2</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ga.com.eureka</groupId>
+                <artifactId>config-server</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ga.com.eureka</groupId>
+                <artifactId>admin-monitor</artifactId>
                 <version>0.0.1</version>
             </dependency>
             <dependency>
@@ -116,6 +127,18 @@
                 <groupId>javax.persistence</groupId>
                 <artifactId>persistence-api</artifactId>
                 <version>1.0.2</version>
+            </dependency>
+
+            <!--springbootadmin-->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>2.1.6</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>2.1.6</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

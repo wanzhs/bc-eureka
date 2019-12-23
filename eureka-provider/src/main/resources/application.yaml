@@ -25,6 +25,12 @@ spring:
     console:
       path: /h2-console
       enabled: true
+  boot:
+    admin:
+      client:
+        instance:
+          service-base-url: http://admin-monitor-server
+
 #  main:
 #    allow-bean-definition-overriding: true
   cloud:
@@ -56,3 +62,10 @@ info:
     java:
       source: 1.8
       target: 1.8
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        exclude: env

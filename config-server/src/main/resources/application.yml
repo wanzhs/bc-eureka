@@ -17,6 +17,11 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/zipkin?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
     username: wanzhs
     password: 123456
+  boot:
+    admin:
+      client:
+        instance:
+          service-base-url: http://admin-monitor-server
 
 
   zipkin:
@@ -33,17 +38,18 @@ spring:
     username: guest
     password: guest
 
-# ע������
 eureka:
+  instance:
+    hostname: 192.168.2.221
+    lease-expiration-duration-in-seconds: 2 # 2秒即过期
+    lease-renewal-interval-in-seconds: 1 # 1秒一次心跳
   client:
     service-url:
       defaultZone: http://user:user@192.168.2.221:8032/eureka/
-  instance:
-    hostname: 192.168.2.221
-    lease-expiration-duration-in-seconds: 2 # 2 秒过期
-    lease-renewal-interval-in-seconds: 1 # 1 秒 心跳
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+
+

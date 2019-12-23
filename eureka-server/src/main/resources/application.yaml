@@ -8,6 +8,12 @@ spring:
     user:
       name: user
       password: user
+  boot:
+    admin:
+      client:
+        instance:
+          service-base-url: http://admin-monitor-server
+
 eureka:
   instance:
     hostname: 192.168.2.221
