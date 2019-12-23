@@ -55,3 +55,5 @@ http://localhost:8035/actuator/bus-refresh(POST)
 }
 ```
 
+### 注意
+如果注册到了监控，自动刷新接口会被覆盖掉，不存在改接口，造成自动刷新的接口无法使用。
