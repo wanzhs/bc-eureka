@@ -93,3 +93,72 @@ java -jar zipkin-server-2.12.9-exec.jar --STORAGE_TYPE=mysql --MYSQL_HOST=192.16
 
 ### 注意
 1. 如果出现bean重复，需要定义一个bean，并通过```@Primary```注解定义一个主bean解决冲突。
+
+## sentinel
+###### 1. git clone github上下载源码，打包
+```
+拉取源码：git clone https://github.com/alibaba/sentinel
+打包：mvn clean package 
+```
+###### 2. 将sentinel-dashboard 的jar包拷贝到服务端目录，启动
+```
+java -Dserver.port=8080 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard.jar
+```
+###### 3. 客户端接入控制台
+引入依赖：
+```
+ <dependency>
+    <groupId>com.alibaba.csp</groupId>
+    <artifactId>sentinel-core</artifactId>
+    <version>1.7.0</version>
+</dependency>
+<dependency>
+    <groupId>com.alibaba.csp</groupId>
+    <artifactId>sentinel-annotation-aspectj</artifactId>
+    <version>1.7.0</version>
+</dependency>
+<dependency>
+    <groupId>com.alibaba.csp</groupId>
+    <artifactId>sentinel-transport-simple-http</artifactId>
+    <version>1.7.0</version>
+</dependency>
+```
+配置启动参数：
+
+```
+-Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=eureka-client
+```
+客户端访问限流控制的接口：
+```
+http://localhost:8033/sentinel/test1
+
+    @GetMapping("/test1")
+    public void test1(){
+        // 配置规则.
+        initFlowRules();
+
+        while (true) {
+            // 1.5.0 版本开始可以直接利用 try-with-resources 特性，自动 exit entry
+            try (Entry entry = SphU.entry("HelloWorld")) {
+                // 被保护的逻辑
+                System.out.println("hello world");
+            } catch (BlockException ex) {
+                // 处理被流控的逻辑
+                System.out.println("blocked!");
+            }
+        }
+    }
+
+    private static void initFlowRules(){
+        List<FlowRule> rules = new ArrayList<>();
+        FlowRule rule = new FlowRule();
+        rule.setResource("HelloWorld");
+        rule.setGrade(RuleConstant.FLOW_GRADE_QPS);
+        // Set limit QPS to 20.
+        rule.setCount(100000);
+        rules.add(rule);
+        FlowRuleManager.loadRules(rules);
+    }
+```
+###### 4. 控制台操作查看
+![控制台功能介绍](./src/main/resources/static/sentinel_home.png)

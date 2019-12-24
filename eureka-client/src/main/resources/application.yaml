@@ -9,14 +9,14 @@ spring:
   sleuth:
     sampler:
       probability: 1
-#  boot:
-#    admin:
-#      client:
-#        # url: http://localhost:8036 # 针对非cloud使用ip地址
-#        instance:
-#          service-base-url: http://admin-monitor-server
-#        username: admin
-#        password: 123456
+  boot:
+    admin:
+      client:
+        # url: http://localhost:8036 # 针对非cloud使用ip地址
+        instance:
+          service-base-url: http://admin-monitor-server
+        username: admin
+        password: 123456
 #  main:
 #    allow-bean-definition-overriding: true
 eureka:
