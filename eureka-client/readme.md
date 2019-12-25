@@ -130,35 +130,79 @@ java -Dserver.port=8080 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject
 ```
 客户端访问限流控制的接口：
 ```
-http://localhost:8033/sentinel/test1
-
-    @GetMapping("/test1")
-    public void test1(){
+http://localhost:8033/sentinel/test/loop?requests=1000&qpslimits=20
+    @Override
+    public void testLoop(Long requests, Integer qpslimits) {
         // 配置规则.
-        initFlowRules();
-
-        while (true) {
+        initFlowRules(qpslimits, ResourcesConstant.RESOURCE1);
+        while (requests-- > 0) {
             // 1.5.0 版本开始可以直接利用 try-with-resources 特性，自动 exit entry
-            try (Entry entry = SphU.entry("HelloWorld")) {
+            try (Entry entry = SphU.entry(ResourcesConstant.RESOURCE1)) {
                 // 被保护的逻辑
-                System.out.println("hello world");
+                System.out.println("testAspectj2 world");
             } catch (BlockException ex) {
                 // 处理被流控的逻辑
                 System.out.println("blocked!");
             }
         }
     }
+    
+    private static void initFlowRules(Integer qpslimits, String resourceName) {
+            List<FlowRule> rules = new ArrayList<>();
+            FlowRule rule = new FlowRule();
+            rule.setResource(resourceName);
+            rule.setGrade(RuleConstant.FLOW_GRADE_QPS);
+            // Set limit QPS to 20.
+            rule.setCount(qpslimits);
+            rules.add(rule);
+            FlowRuleManager.loadRules(rules);
+        }
+        
+注解测试：
+http://localhost:8033/sentinel/test/aspectj1
+http://localhost:8033/sentinel/test/aspectj2
 
-    private static void initFlowRules(){
-        List<FlowRule> rules = new ArrayList<>();
-        FlowRule rule = new FlowRule();
-        rule.setResource("HelloWorld");
-        rule.setGrade(RuleConstant.FLOW_GRADE_QPS);
-        // Set limit QPS to 20.
-        rule.setCount(100000);
-        rules.add(rule);
-        FlowRuleManager.loadRules(rules);
+    @GetMapping("/test/aspectj2")
+    public void testAspectj2(@RequestParam(value = "s", required = false) Long s) {
+        if (ObjectUtils.isEmpty(s)) {
+            s = System.currentTimeMillis();
+        }
+        int i=1000;
+        while (i-->0){
+            sentinelService.testAspectj2(s);
+        }
     }
+    
+        @Override
+        // 对应的 `handleException` 函数需要位于 `ExceptionUtil` 类中，并且必须为 static 函数.
+        @SentinelResource(value = ResourcesConstant.RESOURCE2, blockHandler = "testAspectj1BlockHandler", blockHandlerClass = ExceptionUtil.class)
+        public void testAspectj1() {
+            System.out.println("testAspectj1");
+        }
+    
+        @Override
+        // 原函数
+        @SentinelResource(value = ResourcesConstant.RESOURCE3, blockHandler = "testAspectj2FallbackBlockExceptionHandler"
+                , fallback = "testAspectj2Fallback")
+        public String testAspectj2(long s) {
+            return String.format("Hello at %d", s);
+        }
+    
+        // Fallback函数，函数起那么与原函数一致或加一个Throwable类型的函数
+        public String testAspectj2Fallback(long s) {
+            return String.format("halloFallback %d", s);
+        }
+    
+        // Block异常处理函数，参数最后多一个BlockException，其余与原函数一致。
+        public String testAspectj2FallbackBlockExceptionHandler(long s, BlockException ex) {
+            // Do some log here
+            ex.printStackTrace();
+            return "Oops, Error occurred at " + s;
+        }
+    
+    
+
 ```
+
 ###### 4. 控制台操作查看
 ![控制台功能介绍](./src/main/resources/static/sentinel_home.png)
