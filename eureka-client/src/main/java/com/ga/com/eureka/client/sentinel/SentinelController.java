@@ -73,7 +73,7 @@ public class SentinelController {
 
     @RequestMapping("/test/authority/rule")
     public void testAuthorityRules() {
-        SentinelUtil.initAuthorityRule(ResourcesConstant.RESOURCE5);
+//        SentinelUtil.initAuthorityRule(ResourcesConstant.RESOURCE5);
         int i = 100;
         while (i-- > 0) {
             sentinelService.testAuthorityRule();
