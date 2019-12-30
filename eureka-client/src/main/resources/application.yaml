@@ -17,6 +17,11 @@ spring:
           service-base-url: http://admin-monitor-server
         username: admin
         password: 123456
+  redis:
+    host: localhost
+    port: 6379
+    password:
+    database: 11
 #  main:
 #    allow-bean-definition-overriding: true
 eureka:

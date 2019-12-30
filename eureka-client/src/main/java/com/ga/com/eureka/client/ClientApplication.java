@@ -1,5 +1,6 @@
 package com.ga.com.eureka.client;
 
+import com.ga.com.eureka.client.redis.MRedisUtil;
 import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,7 +30,6 @@ public class ClientApplication {
         HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
         ServletRegistrationBean registrationBean = new ServletRegistrationBean(streamServlet);
         registrationBean.setLoadOnStartup(1);
-//        registrationBean.addUrlMappings("/hystrix.stream");
         registrationBean.addUrlMappings("/actuator/hystrix.stream"); // turbine 默认支持的路径
         registrationBean.setName("HystrixMetricsStreamServlet");
         return registrationBean;
